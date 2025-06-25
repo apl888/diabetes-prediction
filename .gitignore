@@ -184,3 +184,6 @@ cython_debug/
 # Data files
 data/raw/
 data/processed/
+
+data/processed/*.pkl
+models/*.joblib
