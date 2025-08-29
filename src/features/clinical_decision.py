@@ -31,7 +31,7 @@ def assess_patient_risk(patient_features, important_features, preprocessor, cali
     if probability >= 0.46:
         recommendation = 'Refer for diabetes testing and counseling'
         risk_level = 'High'
-    elif probability >= 0.30:
+    elif probability >= 0.32:
         recommendation = 'Monitor with lifestyle counseling'
         risk_level = 'Moderate'
     else:
