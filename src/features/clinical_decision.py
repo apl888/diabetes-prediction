@@ -34,17 +34,17 @@ def assess_patient_risk(
     # preprocess and predict
     processed_data = preprocessor.transform(patient_features)
     important_data = processed_data[important_features]
-    probability = calibrated_model.predict_proba(important_features)[:,1][0]
+    probability = calibrated_model.predict_proba(important_data)[:,1][0]
 
     # define risk bands relative to the selected threshold
     high_risk_band = threshold
-    moderate_risk_bank = max(0, threshold - 0.150) # ensure that it is not < 0
+    moderate_risk_band = max(0, threshold - 0.150) # ensure that it is not < 0
     
     # clinical recommendation
-    if probability >= threshold:
+    if probability >= high_risk_band:
         recommendation = 'Refer for diabetes testing and counseling'
         risk_level = 'High'
-    elif probability >= 0.320:
+    elif probability >= moderate_risk_band:
         recommendation = 'Monitor with lifestyle counseling'
         risk_level = 'Moderate'
     else:
