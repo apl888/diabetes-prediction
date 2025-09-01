@@ -1,6 +1,12 @@
 import pandas as pd
 
-def assess_patient_risk(patient_features, important_features, preprocessor, calibrated_model):
+def assess_patient_risk(
+    patient_features, 
+    important_features, 
+    preprocessor, 
+    calibrated_model,
+    threshold = 0.330
+    ):
     '''
     Assess diabetes risk for a patient and provide clinical recommendations.
     
@@ -14,24 +20,31 @@ def assess_patient_risk(patient_features, important_features, preprocessor, cali
         Fitted preprocessing pipeline
     calibrated_model : fitted model
         Calibrated classification model
-    threshold : float, default=0.46
-        Risk threshold for clinical decisions
+    threshold : Clinical decision threshold (default: 0.330 for balanced approach)
     
     Returns:
     --------
     dict: Contains probability, risk level, and recommendation
     '''
     
+    # validate threshold
+    if not (0 <= threshold <= 1):
+        raise ValueError('Threshold must be between 0 and 1')
+    
     # preprocess and predict
     processed_data = preprocessor.transform(patient_features)
-    important_features = processed_data[important_features]
+    important_data = processed_data[important_features]
     probability = calibrated_model.predict_proba(important_features)[:,1][0]
 
+    # define risk bands relative to the selected threshold
+    high_risk_band = threshold
+    moderate_risk_bank = max(0, threshold - 0.150) # ensure that it is not < 0
+    
     # clinical recommendation
-    if probability >= 0.46:
+    if probability >= threshold:
         recommendation = 'Refer for diabetes testing and counseling'
         risk_level = 'High'
-    elif probability >= 0.32:
+    elif probability >= 0.320:
         recommendation = 'Monitor with lifestyle counseling'
         risk_level = 'Moderate'
     else:
@@ -41,5 +54,6 @@ def assess_patient_risk(patient_features, important_features, preprocessor, cali
     return {
         'probability': f'{probability:.1%}',
         'risk_level': risk_level,
-        'recommendation': recommendation
+        'recommendation': recommendation,
+        'threshold_used': threshold
     }
