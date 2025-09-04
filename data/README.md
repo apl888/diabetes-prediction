@@ -13,7 +13,7 @@ This folder contains datasets for the project.
 - `data/processed/X_test.pkl`
 - `data/processed/y_test.pkl`
 
-Note: These files are **not included in the repository** (see `.gitignore`).  
+Note: (1) These files are **not included in the repository** (see `.gitignore`).  (2) The pkl files are not required for modeling.  The "3_XGBoost_model" handles preprocessing internally. Use only if you want standalone access to the transformed datasets.
 
 ## Usage
 1. Ensure that `data/raw/` contains the raw dataset (e.g., `diabetes.csv`). 

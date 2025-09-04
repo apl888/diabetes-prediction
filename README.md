@@ -15,8 +15,8 @@ Detailed reports, analyses, and supporting notebooks can be found in the [report
   [3_XGBoost_model.ipynb](reports/3_XGBoost_model.ipynb): Model training and evaluation, including hyperparameter tuning, classification metrics, confusion matrix, ROC/PR curves, and probability calibration.  
 
 - **Full Project Report**  
-  - [Pima Indian Diabetes Dataset Report.pdf](reports/Pima%20Indian%20Diabetes%20Dataset%20Report.pdf)  
-  - [Pima Indian Diabetes Dataset Report.docx](reports/Pima%20Indian%20Diabetes%20Dataset%20Report.docx)  
+  - [ML Diabetes Risk Assessment Report.pdf](reports/Pima%20Indian%20Diabetes%20Dataset%20Report.pdf)  
+
 
 ## Data Source
 

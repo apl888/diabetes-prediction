@@ -4,7 +4,7 @@ This directory contains written reports that accompany the notebooks in the repo
 The reports summarize exploratory data analysis (EDA), preprocessing steps, modeling, and evaluation results.  
 
 ## Files 
-- `Pima Indian Diabetes Dataset Report.pdf` – Read-only PDF version of the report (recommended for quick viewing).  
+- `ML Diabetes Risk Assessment Report.pdf` – Read-only PDF version of the report (recommended for quick viewing).  
 
 ## Connection to Notebooks
 - [EDA notebook](..notebooks/1_eda.ipynb) → EDA section of the report.  
